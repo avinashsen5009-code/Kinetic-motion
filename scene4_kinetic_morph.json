@@ -1,0 +1,238 @@
+{
+  "schemaVersion": "1.0",
+  "id": "kinetic-morph-opener",
+  "title": "Vector Path Morphing & 2.5D Kinetic Opener",
+  "description": "Demonstrates smooth SVG cubic-bezier path morphing, concentric trim-path rings, 2.5D perspective tilt, and staggered kinetic typography.",
+  "width": 1920,
+  "height": 1080,
+  "fps": 60,
+  "duration": 5,
+  "fonts": [
+    {
+      "family": "Inter",
+      "weights": [
+        600,
+        700,
+        800
+      ]
+    }
+  ],
+  "background": {
+    "gradient": {
+      "type": "radial",
+      "cx": 960,
+      "cy": 540,
+      "r": 1100,
+      "stops": [
+        {
+          "offset": 0,
+          "color": "#1e1b4b"
+        },
+        {
+          "offset": 0.6,
+          "color": "#0f172a"
+        },
+        {
+          "offset": 1,
+          "color": "#020617"
+        }
+      ]
+    },
+    "grid": {
+      "enabled": true,
+      "spacing": 60,
+      "color": "#818cf8",
+      "opacity": 0.12
+    }
+  },
+  "layers": [
+    {
+      "id": "layer-morph-center",
+      "name": "Concentric Rings & Morphing Vector Core",
+      "zIndex": 1,
+      "elements": [
+        {
+          "id": "outer-trim-ring",
+          "type": "circle",
+          "x": 960,
+          "y": 460,
+          "radius": 260,
+          "stroke": "#38bdf8",
+          "strokeWidth": 4,
+          "strokeDash": [
+            16,
+            10
+          ],
+          "keyframes": [
+            {
+              "time": 0,
+              "trimEnd": 0,
+              "rotation": 0
+            },
+            {
+              "time": 1.5,
+              "trimEnd": 1,
+              "rotation": 90,
+              "easing": "easeOutCubic"
+            },
+            {
+              "time": 5,
+              "trimEnd": 1,
+              "rotation": 240,
+              "easing": "linear"
+            }
+          ]
+        },
+        {
+          "id": "inner-trim-arc",
+          "type": "arc",
+          "x": 960,
+          "y": 460,
+          "radius": 215,
+          "innerRadius": 198,
+          "startAngle": -140,
+          "endAngle": 140,
+          "fill": "#f472b6",
+          "keyframes": [
+            {
+              "time": 0,
+              "trimEnd": 0,
+              "rotation": -60
+            },
+            {
+              "time": 1.4,
+              "trimEnd": 1,
+              "rotation": 0,
+              "easing": "easeOutBack"
+            },
+            {
+              "time": 5,
+              "trimEnd": 1,
+              "rotation": 45,
+              "easing": "easeInOutQuad"
+            }
+          ]
+        },
+        {
+          "id": "morphing-hero-shape",
+          "name": "Cubic Bezier Morphing Vector Path",
+          "type": "path",
+          "x": 960,
+          "y": 460,
+          "d": "M 0 -140 C 55 -140, 140 -55, 140 0 C 140 55, 55 140, 0 140 C -55 140, -140 55, -140 0 C -140 -55, -55 -140, 0 -140 Z",
+          "morphTo": "M 0 -165 C 25 -65, 65 -25, 165 0 C 65 25, 25 65, 0 165 C -25 65, -65 25, -165 0 C -65 -25, -25 -65, 0 -165 Z",
+          "fillGradient": {
+            "type": "linear",
+            "angle": 135,
+            "stops": [
+              {
+                "offset": 0,
+                "color": "#38bdf8"
+              },
+              {
+                "offset": 0.5,
+                "color": "#818cf8"
+              },
+              {
+                "offset": 1,
+                "color": "#f472b6"
+              }
+            ]
+          },
+          "stroke": "#f8fafc",
+          "strokeWidth": 4,
+          "depth25d": {
+            "extrudeX": 14,
+            "extrudeY": 18,
+            "extrudeColor": "#312e81"
+          },
+          "keyframes": [
+            {
+              "time": 0,
+              "scale": 0.2,
+              "morphProgress": 0,
+              "rotation": -45,
+              "tiltX": 25
+            },
+            {
+              "time": 1.1,
+              "scale": 1,
+              "morphProgress": 0,
+              "rotation": 0,
+              "tiltX": 12,
+              "easing": "easeOutBack"
+            },
+            {
+              "time": 2.8,
+              "scale": 1.12,
+              "morphProgress": 1,
+              "rotation": 90,
+              "tiltX": -12,
+              "easing": [
+                "cubic-bezier",
+                0.34,
+                1.56,
+                0.64,
+                1
+              ]
+            },
+            {
+              "time": 4.5,
+              "scale": 1,
+              "morphProgress": 0.35,
+              "rotation": 180,
+              "tiltX": 0,
+              "easing": "easeInOutCubic"
+            }
+          ]
+        },
+        {
+          "id": "kinetic-headline",
+          "type": "text",
+          "x": 960,
+          "y": 835,
+          "text": "DETERMINISTIC VECTOR MOTION ENGINE",
+          "fontSize": 48,
+          "fontWeight": 800,
+          "fill": "#f8fafc",
+          "shadow": {
+            "color": "rgba(56, 189, 248, 0.45)",
+            "blur": 24,
+            "offsetX": 0,
+            "offsetY": 6
+          },
+          "entrance": {
+            "type": "scaleUp",
+            "delay": 0.4,
+            "duration": 0.7,
+            "easing": "easeOutBack"
+          }
+        },
+        {
+          "id": "kinetic-subline",
+          "type": "text",
+          "x": 960,
+          "y": 905,
+          "text": "100% JSON-SPECIFIED GEOMETRY  \u2022  1920\u00d71080 EXPORT  \u2022  ZERO TEMPLATES",
+          "fontSize": 18,
+          "fontWeight": 700,
+          "fill": "#38bdf8",
+          "backgroundBox": {
+            "fill": "rgba(15, 23, 42, 0.85)",
+            "stroke": "rgba(56, 189, 248, 0.4)",
+            "padding": [
+              24,
+              10
+            ],
+            "cornerRadius": 20
+          },
+          "entrance": {
+            "type": "slideUp",
+            "delay": 0.75,
+            "duration": 0.6
+          }
+        }
+      ]
+    }
+  ]
+}

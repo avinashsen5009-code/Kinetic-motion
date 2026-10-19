@@ -1,0 +1,338 @@
+{
+  "schemaVersion": "1.0",
+  "id": "renewable-energy-telemetry",
+  "title": "Grid-Scale Solar & Offshore Wind Surge",
+  "description": "Combines custom vector wind turbine geometry with continuous keyframe rotation, area & donut charts, and animated GW counters.",
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "duration": 6,
+  "fonts": [
+    {
+      "family": "Inter",
+      "weights": [
+        500,
+        600,
+        700,
+        800
+      ]
+    }
+  ],
+  "background": {
+    "gradient": {
+      "type": "linear",
+      "angle": 145,
+      "stops": [
+        {
+          "offset": 0,
+          "color": "#0c192c"
+        },
+        {
+          "offset": 0.55,
+          "color": "#0f2942"
+        },
+        {
+          "offset": 1,
+          "color": "#06282d"
+        }
+      ]
+    },
+    "grid": {
+      "enabled": true,
+      "spacing": 80,
+      "color": "#38bdf8",
+      "opacity": 0.1
+    }
+  },
+  "layers": [
+    {
+      "id": "layer-wind-illustration",
+      "name": "Vector Wind Turbine & Solar Illustration",
+      "zIndex": 1,
+      "elements": [
+        {
+          "id": "energy-title",
+          "type": "text",
+          "x": 130,
+          "y": 110,
+          "text": "Clean Grid Capacity Additions (2021\u20132026)",
+          "fontSize": 44,
+          "fontWeight": 800,
+          "align": "left",
+          "fill": "#f8fafc",
+          "entrance": {
+            "type": "slideRight",
+            "duration": 0.6
+          }
+        },
+        {
+          "id": "energy-subtitle",
+          "type": "text",
+          "x": 130,
+          "y": 164,
+          "text": "Offshore wind + utility solar now account for 84% of new global generation capacity",
+          "fontSize": 20,
+          "fontWeight": 500,
+          "align": "left",
+          "fill": "#94a3b8",
+          "entrance": {
+            "type": "fade",
+            "delay": 0.3,
+            "duration": 0.6
+          }
+        },
+        {
+          "id": "wind-turbine-group",
+          "type": "group",
+          "x": 340,
+          "y": 620,
+          "entrance": {
+            "type": "slideUp",
+            "delay": 0.2,
+            "duration": 0.65
+          },
+          "children": [
+            {
+              "id": "turbine-base",
+              "type": "rect",
+              "x": 0,
+              "y": 260,
+              "width": 160,
+              "height": 22,
+              "cornerRadius": 8,
+              "fill": "#38bdf8"
+            },
+            {
+              "id": "turbine-tower",
+              "type": "polygon",
+              "points": [
+                [
+                  -18,
+                  250
+                ],
+                [
+                  18,
+                  250
+                ],
+                [
+                  8,
+                  -110
+                ],
+                [
+                  -8,
+                  -110
+                ]
+              ],
+              "fill": "#e2e8f0",
+              "stroke": "#94a3b8",
+              "strokeWidth": 2
+            },
+            {
+              "id": "turbine-rotor-hub",
+              "type": "group",
+              "x": 0,
+              "y": -110,
+              "keyframes": [
+                {
+                  "time": 0,
+                  "rotation": 0
+                },
+                {
+                  "time": 6,
+                  "rotation": 540,
+                  "easing": "linear"
+                }
+              ],
+              "children": [
+                {
+                  "id": "blade-1",
+                  "type": "path",
+                  "d": "M 0 0 C -14 -45, -12 -140, 0 -195 C 10 -140, 10 -45, 0 0 Z",
+                  "fill": "#f8fafc",
+                  "stroke": "#38bdf8",
+                  "strokeWidth": 2
+                },
+                {
+                  "id": "blade-2",
+                  "type": "path",
+                  "rotation": 120,
+                  "d": "M 0 0 C -14 -45, -12 -140, 0 -195 C 10 -140, 10 -45, 0 0 Z",
+                  "fill": "#f8fafc",
+                  "stroke": "#38bdf8",
+                  "strokeWidth": 2
+                },
+                {
+                  "id": "blade-3",
+                  "type": "path",
+                  "rotation": 240,
+                  "d": "M 0 0 C -14 -45, -12 -140, 0 -195 C 10 -140, 10 -45, 0 0 Z",
+                  "fill": "#f8fafc",
+                  "stroke": "#38bdf8",
+                  "strokeWidth": 2
+                },
+                {
+                  "id": "rotor-center-cap",
+                  "type": "circle",
+                  "radius": 16,
+                  "fill": "#38bdf8",
+                  "stroke": "#0f172a",
+                  "strokeWidth": 4
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gw-counter",
+          "type": "text",
+          "x": 340,
+          "y": 950,
+          "fontSize": 42,
+          "fontWeight": 800,
+          "align": "center",
+          "fill": "#34d399",
+          "counter": {
+            "from": 180,
+            "to": 585,
+            "decimals": 0,
+            "prefix": "+",
+            "suffix": " GW Added"
+          },
+          "keyframes": [
+            {
+              "time": 0.4,
+              "counterValue": 180
+            },
+            {
+              "time": 4.5,
+              "counterValue": 585,
+              "easing": "easeOutCubic"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "layer-energy-charts",
+      "name": "Area & Donut Charts Layer",
+      "zIndex": 2,
+      "elements": [
+        {
+          "id": "solar-growth-area-chart",
+          "type": "chart",
+          "chartType": "area",
+          "x": 1010,
+          "y": 580,
+          "width": 680,
+          "height": 520,
+          "fill": "rgba(15, 23, 42, 0.82)",
+          "stroke": "#38bdf8",
+          "strokeWidth": 3.5,
+          "cornerRadius": 22,
+          "minValue": 100,
+          "maxValue": 650,
+          "valueSuffix": " GW",
+          "data": [
+            {
+              "label": "2021",
+              "value": 195
+            },
+            {
+              "label": "2022",
+              "value": 260
+            },
+            {
+              "label": "2023",
+              "value": 355
+            },
+            {
+              "label": "2024",
+              "value": 445
+            },
+            {
+              "label": "2025",
+              "value": 520
+            },
+            {
+              "label": "2026",
+              "value": 585
+            }
+          ],
+          "keyframes": [
+            {
+              "time": 0.4,
+              "dataProgress": 0,
+              "opacity": 0
+            },
+            {
+              "time": 0.9,
+              "dataProgress": 0.1,
+              "opacity": 1
+            },
+            {
+              "time": 4.2,
+              "dataProgress": 1,
+              "opacity": 1,
+              "easing": [
+                "cubic-bezier",
+                0.22,
+                1,
+                0.36,
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "id": "mix-donut-chart",
+          "type": "chart",
+          "chartType": "donut",
+          "x": 1620,
+          "y": 580,
+          "width": 440,
+          "height": 520,
+          "fill": "rgba(15, 23, 42, 0.82)",
+          "stroke": "rgba(148, 163, 184, 0.25)",
+          "strokeWidth": 2,
+          "cornerRadius": 22,
+          "valueSuffix": "%",
+          "data": [
+            {
+              "label": "Solar",
+              "value": 56,
+              "color": "#fbbf24"
+            },
+            {
+              "label": "Wind",
+              "value": 28,
+              "color": "#38bdf8"
+            },
+            {
+              "label": "Storage",
+              "value": 16,
+              "color": "#34d399"
+            }
+          ],
+          "keyframes": [
+            {
+              "time": 1,
+              "dataProgress": 0,
+              "opacity": 0
+            },
+            {
+              "time": 1.4,
+              "dataProgress": 0.05,
+              "opacity": 1
+            },
+            {
+              "time": 4.4,
+              "dataProgress": 1,
+              "opacity": 1,
+              "easing": "easeOutQuart"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
